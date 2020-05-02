@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practica Javascript</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/reset.css">
+
+
+</head>
+
+<body>
+    <div class="wrapper">
+        <header>
+            <!--     Parte de filtros -->
+            <div class="container">
+
+                <form id="tareas">
+                    <h2>Tareas</h2>
+                    <label>
+                        <input type="text" id="tarea" placeholder="Introduce una tarea" required>
+                        <select name="menu" required>
+                            <option value="0">Introduce una prioridad</option>
+                            <option value="1">Diaria</option>
+                            <option value="2">Mensual</option>
+                            <option value="3">Urgente</option>
+                        </select>
+
+                        <input type="submit" value="GUARDAR">
+                    </label>
+
+                </form>
+                <div class="filtro">
+                    <h2>Filtro de busqueda</h2>
+                    <select name="menu" required>
+                        <option value="0">Introduce una prioridad</option>
+                        <option value="1">Diaria</option>
+                        <option value="2">Mensual</option>
+                        <option value="3">Urgente</option>
+                    </select>
+                    <input type="text" id="" placeholder="Tarea a buscar" required>
+                </div>
+            </div>
+        </header>
+        <main>
+            <!-- Parte de tareas pintadas -->
+            <div class="container">
+                <div class="row urgente">
+                    <article class="actividad ">
+                        <p>Estudiar Javascript</p>
+                       
+                    </article>
+                     <div class="boton">Eliminar</div>
+                </div>
+              
+                <div class="row diaria">
+                    <article class="actividad ">
+                        <p>Estudiar Javascript</p>
+                       
+                    </article>
+                     <div class="boton">Eliminar</div>
+                </div>
+              
+                <div class="row mensual">
+                    <article class="actividad ">
+                        <p>Estudiar Javascript</p>
+                       
+                    </article>
+                     <div class="boton">Eliminar</div>
+                </div>
+              
+              
+            </div>
+
+
+
+        </main>
+        <footer>
+            <!-- footer -->
+        </footer>
+    </div>
+</body>
+
+</html>
