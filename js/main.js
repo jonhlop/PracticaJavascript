@@ -24,7 +24,7 @@ listaTareas = [
 //introducir una tarea
 
 var botonGuardar = document.querySelector('#btn');
-var seccionTareas = document.querySelector('.container')
+var seccionTareas = document.querySelector('#seccionTareas')
 
 botonGuardar.addEventListener('click', (event) => {
     event.preventDefault();
