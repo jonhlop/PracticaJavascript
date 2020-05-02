@@ -1,26 +1,3 @@
-var listaTareas = new Array();
-
-listaTareas = [
-    /* {
-            'idTarea': 0,
-            'tarea': 'Estudiar Javascript',
-            'prioridad': 'urgente'
-        },
-        {
-            'idTarea': 1,
-            'tarea': 'Sacar al perro',
-            'prioridad': 'diaria'
-        },
-        {
-            'idTarea': 2,
-            'tarea': 'Salir a cenar ',
-            'prioridad': 'mensual'
-        }
-     */
-
-
-]
-
 //introducir una tarea
 
 var botonGuardar = document.querySelector('#btn');
@@ -44,7 +21,8 @@ botonGuardar.addEventListener('click', (event) => {
 
 });
 
-var contador = 0;
+var contador = 3;
+
 
 function guardarDatos(pTarea, pPrioridad) {
     let registro = new Object();
@@ -56,17 +34,103 @@ function guardarDatos(pTarea, pPrioridad) {
     //lo metemos en el array
     listaTareas.push(registro);
     pintarTarea(registro)
-
-
 }
 
 function pintarTarea(pObjeto) {
 
-    seccionTareas.innerHTML += `<div class="row ${pObjeto.prioridad}">
-                            <article class="actividad ">
-                                <p>${pObjeto.tarea}</p>
+    seccionTareas.innerHTML += ` <article class="row ${pObjeto.prioridad} ">
+                                <div class="actividad">
+                                    <p>${pObjeto.tarea}</p>
 
-                            </article>
-                            <div class="boton">Eliminar</div>
-                            </div>`
+                                </div>
+                                <div data-id="${pObjeto.idTarea}"  id="boton">Eliminar</div>
+                            </article>`
 }
+
+
+function pintarTareas(plista) {
+    for (tarea of plista) {
+        pintarTarea(tarea)
+    }
+}
+pintarTareas(listaTareas);
+
+
+ var listaBotones = document.querySelectorAll('#boton')
+
+for (boton of listaBotones) {
+    boton.addEventListener('click', eliminarTarea)
+}
+
+
+function eliminarTarea(event) {
+    event.preventDefault();
+
+    let borrarId = event.target.dataset.id;
+  
+    console.log(borrarId)
+
+
+
+
+} 
+
+
+
+
+// filtrar por prioridad
+
+
+//captura el lanzador del evento que en este caso es propio select evento change
+
+
+var seleccionPrioridad = document.querySelector('#menuFiltro');
+seleccionPrioridad.addEventListener('change', capturarCambio);
+
+
+function capturarCambio(event) {
+    let tipoPrioridad = event.target.value;
+    console.log(tipoPrioridad)
+
+    if (tipoPrioridad != "") {
+        seccionTareas.innerHTML = "";
+        pintarTareas(filtrarPrioridad(listaTareas, tipoPrioridad));
+    } else {
+        seccionTareas.innerHTML = "";
+        pintarTareas(listaTareas)
+    }
+
+
+}
+
+function filtrarPrioridad(plista, pPrioridad) {
+    listaFiltrada = plista.filter(function (elemento) {
+        return elemento.prioridad == pPrioridad;
+    })
+    return listaFiltrada;
+}
+
+
+//buscar por nombre de tarea
+
+var buscador = document.querySelector('#buscador');
+
+
+
+function busquedaPalabra  () {
+    //console.log(buscador.value)
+    seccionTareas.innerHTML = "";
+    const texto = buscador.value.toLowerCase();
+    for (let tarea of listaTareas) {
+
+        let nombre = tarea.tarea.toLowerCase()
+        if (nombre.indexOf(texto) != -1) {
+            pintarTarea(tarea)
+
+        }
+         
+        
+
+    }
+}
+buscador.addEventListener('keyup', busquedaPalabra)

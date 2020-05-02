@@ -60,7 +60,7 @@ main .actividad {
   text-align: center;
 }
 
-main .boton {
+main #boton {
   width: 20%;
   height: 60px;
   border: 4px solid black;
@@ -72,7 +72,7 @@ main .boton {
   transition: 0.8s;
 }
 
-main .boton:hover {
+main #boton:hover {
   background-color: rgba(242, 38, 19, 0.5);
   color: black;
 
@@ -99,7 +99,7 @@ main .mensual {
 footer .pie {
   background-color: black;
   color: #ccc;
-  font-family: ;
+
   text-align: center;
   padding: 50px;
   height: auto;
