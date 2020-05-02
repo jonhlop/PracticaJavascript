@@ -21,57 +21,58 @@
                     <h2>Tareas</h2>
                     <label>
                         <input type="text" id="tarea" placeholder="Introduce una tarea" required>
-                        <select name="menu" required>
-                            <option value="0">Introduce una prioridad</option>
-                            <option value="1">Diaria</option>
-                            <option value="2">Mensual</option>
-                            <option value="3">Urgente</option>
+                        <select id="menu" required>
+                            <option value="">Introduce una prioridad</option>
+                            <option value="diaria">Diaria</option>
+                            <option value="mensual">Mensual</option>
+                            <option value="urgente">Urgente</option>
                         </select>
 
-                        <input type="submit" value="GUARDAR">
+                        <input type="submit" id="btn" value="GUARDAR">
                     </label>
 
                 </form>
                 <div class="filtro">
                     <h2>Filtro de busqueda</h2>
-                    <select name="menu" required>
-                        <option value="0">Introduce una prioridad</option>
-                        <option value="1">Diaria</option>
-                        <option value="2">Mensual</option>
-                        <option value="3">Urgente</option>
+                    <select id="menu" required>
+                        <option value="">Introduce una prioridad</option>
+                        <option value="diaria">Diaria</option>
+                        <option value="mensual">Mensual</option>
+                        <option value="urgente">Urgente</option>
                     </select>
                     <input type="text" id="" placeholder="Tarea a buscar" required>
                 </div>
+                <h3 id="mensaje"></h3>
             </div>
         </header>
         <main>
             <!-- Parte de tareas pintadas -->
-            <div class="container">
-                <div class="row urgente">
+          <!--   <div class="container">
+               <div class="row urgente">
                     <article class="actividad ">
                         <p>Estudiar Javascript</p>
-                       
+
                     </article>
-                     <div class="boton">Eliminar</div>
+                    <div class="boton">Eliminar</div>
                 </div>
-              
+
                 <div class="row diaria">
                     <article class="actividad ">
                         <p>Estudiar Javascript</p>
-                       
+
                     </article>
-                     <div class="boton">Eliminar</div>
+                    <div class="boton">Eliminar</div>
                 </div>
-              
+
                 <div class="row mensual">
                     <article class="actividad ">
                         <p>Estudiar Javascript</p>
-                       
+
                     </article>
-                     <div class="boton">Eliminar</div>
-                </div>
-              
-              
+                    <div class="boton">Eliminar</div>
+                </div> -->
+ 
+
             </div>
 
 
@@ -79,8 +80,15 @@
         </main>
         <footer>
             <!-- footer -->
+
+            <div class="pie">
+                <p>APP DE TODO`S DE JONH</p>
+                <p>COPYRIGHT&copy2020</p>
+            </div>
         </footer>
+
     </div>
+    <script src="js/main.js"></script>
 </body>
 
 </html>
