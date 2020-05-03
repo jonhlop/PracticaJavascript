@@ -1,28 +1,27 @@
 //introducir una tarea
 
-var botonGuardar = document.querySelector('#btn');
-var seccionTareas = document.querySelector('#seccionTareas')
+var botonGuardar = document.querySelector("#btn");
+var seccionTareas = document.querySelector("#seccionTareas");
 
-botonGuardar.addEventListener('click', (event) => {
+
+
+botonGuardar.addEventListener("click", (event) => {
     event.preventDefault();
     mensaje.innerText = "";
     //capturar datos que me pasa el formulario
-    let tarea = document.querySelector('#tarea').value
-    let prioridad = document.querySelector('#menu').value
+    let tarea = document.querySelector("#tarea").value;
+    let prioridad = document.querySelector("#menu").value;
     //console.log(prioridad)
     if (tarea != "" && prioridad != "") {
-        guardarDatos(tarea, prioridad)
-        document.querySelector('#tarea').value = "";
-        document.querySelector('#menu').value = "";
-
+        guardarDatos(tarea, prioridad);
+        document.querySelector("#tarea").value = "";
+        document.querySelector("#menu").value = "";
     } else {
         mensaje.innerText = "Debes rellenar todos los campos";
     }
-
 });
 
 var contador = 3;
-
 
 function guardarDatos(pTarea, pPrioridad) {
     let registro = new Object();
@@ -33,104 +32,106 @@ function guardarDatos(pTarea, pPrioridad) {
 
     //lo metemos en el array
     listaTareas.push(registro);
-    pintarTarea(registro)
+    pintarTarea(registro);
+    console.log(listaTareas)
+
 }
 
-function pintarTarea(pObjeto) {
 
-    seccionTareas.innerHTML += ` <article class="row ${pObjeto.prioridad} ">
+
+function pintarTarea(pObjeto) {
+    seccionTareas.innerHTML += ` <article id="${pObjeto.idTarea}"        class="row ${pObjeto.prioridad} ">
                                 <div class="actividad">
                                     <p>${pObjeto.tarea}</p>
 
                                 </div>
-                                <div data-id="${pObjeto.idTarea}"  id="boton">Eliminar</div>
-                            </article>`
+                                <div data-id="${pObjeto.idTarea}"id="boton">Eliminar</div>
+                            </article>`;
+    
+    leerBotones('listabotones')
 }
+
 
 
 function pintarTareas(plista) {
     for (tarea of plista) {
-        pintarTarea(tarea)
+        pintarTarea(tarea);
+
     }
+
+
+
 }
 pintarTareas(listaTareas);
 
-
- var listaBotones = document.querySelectorAll('#boton')
-
-for (boton of listaBotones) {
-    boton.addEventListener('click', eliminarTarea)
+//funcion leer botones
+function leerBotones(plistaBotones){
+    var plistaBotones = document.querySelectorAll("#boton");
+    for (boton of plistaBotones) {
+        boton.addEventListener("click", eliminarTarea);
+    }
 }
-
+//leerBotones('listabotones')
 
 function eliminarTarea(event) {
-    event.preventDefault();
-
+    console.log(listaTareas)
     let borrarId = event.target.dataset.id;
-  
-    console.log(borrarId)
+    //  console.log(borrarId);
+    article = document.getElementById(borrarId);
+    article.parentNode.removeChild(article)
+    //console.log(article)
 
-
-
-
-} 
-
-
-
+    //borramos del array
+    var posicionBuscada = listaTareas.findIndex(
+        (nombre) => nombre.idTarea == borrarId
+    );
+    listaTareas.splice(posicionBuscada, 1);
+}
 
 // filtrar por prioridad
 
-
 //captura el lanzador del evento que en este caso es propio select evento change
 
-
-var seleccionPrioridad = document.querySelector('#menuFiltro');
-seleccionPrioridad.addEventListener('change', capturarCambio);
-
+var seleccionPrioridad = document.querySelector("#menuFiltro");
+seleccionPrioridad.addEventListener("change", capturarCambio);
 
 function capturarCambio(event) {
     let tipoPrioridad = event.target.value;
-    console.log(tipoPrioridad)
+    console.log(tipoPrioridad);
 
     if (tipoPrioridad != "") {
         seccionTareas.innerHTML = "";
         pintarTareas(filtrarPrioridad(listaTareas, tipoPrioridad));
     } else {
         seccionTareas.innerHTML = "";
-        pintarTareas(listaTareas)
+        pintarTareas(listaTareas);
     }
-
-
 }
 
 function filtrarPrioridad(plista, pPrioridad) {
-    listaFiltrada = plista.filter(function (elemento) {
+    var listaFiltrada = plista.filter(function (elemento) {
         return elemento.prioridad == pPrioridad;
-    })
-    return listaFiltrada;
+    });
+    return listaFiltrada
 }
-
 
 //buscar por nombre de tarea
 
-var buscador = document.querySelector('#buscador');
+var buscador = document.querySelector("#buscador");
 
-
-
-function busquedaPalabra  () {
+function busquedaPalabra() {
     //console.log(buscador.value)
     seccionTareas.innerHTML = "";
     const texto = buscador.value.toLowerCase();
     for (let tarea of listaTareas) {
-
-        let nombre = tarea.tarea.toLowerCase()
+        let nombre = tarea.tarea.toLowerCase();
         if (nombre.indexOf(texto) != -1) {
-            pintarTarea(tarea)
-
+            pintarTarea(tarea);
         }
-         
-        
-
     }
 }
-buscador.addEventListener('keyup', busquedaPalabra)
+buscador.addEventListener("keyup", busquedaPalabra);
+
+
+
+//borrar tareas
