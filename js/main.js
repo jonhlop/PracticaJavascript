@@ -47,8 +47,8 @@ function pintarTarea(pObjeto) {
                                 </div>
                                 <div data-id="${pObjeto.idTarea}"id="boton">Eliminar</div>
                             </article>`;
-    
-    leerBotones('listabotones')
+
+    leerBotones('listabotones') //cada vez que pintemos una tarea nueva es necesario leer los botones para poder borrar las tareas posteriormente
 }
 
 
@@ -65,7 +65,7 @@ function pintarTareas(plista) {
 pintarTareas(listaTareas);
 
 //funcion leer botones
-function leerBotones(plistaBotones){
+function leerBotones(plistaBotones) {
     var plistaBotones = document.querySelectorAll("#boton");
     for (boton of plistaBotones) {
         boton.addEventListener("click", eliminarTarea);
