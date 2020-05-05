@@ -18,6 +18,7 @@ botonGuardar.addEventListener("click", (event) => {
         document.querySelector("#menu").value = "";
     } else {
         mensaje.innerText = "Debes rellenar todos los campos";
+        
     }
 });
 
